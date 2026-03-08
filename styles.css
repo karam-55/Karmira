@@ -35,6 +35,105 @@ body {
   overflow-x: hidden;
 }
 
+/* شاشة كلمة السر */
+.lock-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #fef7f7 0%, #f5e0e8 50%, #f0d8e4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+body.unlocked .lock-screen {
+  display: none;
+}
+
+.lock-screen-inner {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--accent-soft);
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.lock-title {
+  font-family: var(--font-arabic);
+  font-size: 1.6rem;
+  color: var(--accent-rose);
+  margin-bottom: 0.25rem;
+}
+
+.lock-tagline {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  margin-bottom: 1.5rem;
+}
+
+.lock-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lock-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 2px solid var(--accent-soft);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.lock-input:focus {
+  outline: none;
+  border-color: var(--accent-pink);
+}
+
+.lock-btn {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-rose));
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lock-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.lock-error {
+  font-size: 0.9rem;
+  color: var(--accent-rose);
+  font-weight: 600;
+  margin: 0;
+}
+
+.lock-error.hidden {
+  display: none;
+}
+
+.app-content.hidden {
+  display: none !important;
+}
+
+body.unlocked .app-content {
+  display: block;
+}
+
 /* خلفية ناعمة متحركة */
 body::before {
   content: "";
