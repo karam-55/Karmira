@@ -10,6 +10,20 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- شاشة الدخول بكلمة السر -->
+  <div id="lockScreen" class="lock-screen">
+    <div class="lock-screen-inner">
+      <h2 class="lock-title">كرم و ميرا 💕</h2>
+      <p class="lock-tagline">ذكرياتنا الحلوة</p>
+      <form id="lockForm" class="lock-form">
+        <input type="password" id="lockPassword" class="lock-input" placeholder="كلمة السر" autocomplete="off" required />
+        <button type="submit" class="lock-btn">دخول</button>
+        <p id="lockError" class="lock-error hidden"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="appContent" class="app-content hidden">
   <div class="floating-hearts" aria-hidden="true">
     <span class="heart h1">💕</span>
     <span class="heart h2">🌸</span>
@@ -117,6 +131,7 @@
     </div>
   </footer>
 
+  </div><!-- نهاية appContent -->
   <script src="app.js"></script>
 </body>
 </html>
