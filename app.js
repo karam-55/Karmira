@@ -1,7 +1,62 @@
 /**
  * كرم و ميرا - ذكرياتنا + معرض الصور
- * حفظ آمن + نسخة احتياطية
+ * حفظ آمن + نسخة احتياطية + حماية بكلمة سر
  */
+
+const LOCK_STORAGE_KEY = "km_ok";
+const PASSWORD_HASH = "476a8f5a31e062bee470b4d852e74f67a188434ee7f965d96819256fada482f4";
+
+const lockScreen = document.getElementById("lockScreen");
+const appContent = document.getElementById("appContent");
+const lockForm = document.getElementById("lockForm");
+const lockPassword = document.getElementById("lockPassword");
+const lockError = document.getElementById("lockError");
+
+function sha256(str) {
+  return crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)).then(function (buf) {
+    return Array.from(new Uint8Array(buf))
+      .map(function (b) { return b.toString(16).padStart(2, "0"); })
+      .join("");
+  });
+}
+
+(function initLock() {
+  try {
+    if (sessionStorage.getItem(LOCK_STORAGE_KEY) === "1") {
+      document.body.classList.add("unlocked");
+      appContent.classList.remove("hidden");
+      lockScreen.style.display = "none";
+      return;
+    }
+  } catch (_) {}
+  appContent.classList.add("hidden");
+  lockScreen.style.display = "flex";
+
+  lockForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var raw = (lockPassword.value || "").trim();
+    if (!raw) {
+      lockError.textContent = "أدخل كلمة السر";
+      lockError.classList.remove("hidden");
+      return;
+    }
+    sha256(raw).then(function (hash) {
+      if (hash.toLowerCase() === PASSWORD_HASH.toLowerCase()) {
+        sessionStorage.setItem(LOCK_STORAGE_KEY, "1");
+        document.body.classList.add("unlocked");
+        appContent.classList.remove("hidden");
+        lockScreen.style.display = "none";
+        lockError.classList.add("hidden");
+        lockPassword.value = "";
+      } else {
+        lockError.textContent = "كلمة السر غير صحيحة";
+        lockError.classList.remove("hidden");
+        lockPassword.value = "";
+        lockPassword.focus();
+      }
+    });
+  });
+})();
 
 const STORAGE_KEY = "karam-mira-memories";
 const GALLERY_KEY = "karam-mira-gallery";
