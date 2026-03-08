@@ -1,0 +1,890 @@
+/* ===== كرم و ميرا - ذكرياتنا ===== */
+:root {
+  --bg: #fef7f7;
+  --bg-card: #fff;
+  --accent-pink: #e8a0bf;
+  --accent-rose: #d4738a;
+  --accent-soft: #f5d0dc;
+  --accent-lavender: #c9b1d4;
+  --text: #4a3f4d;
+  --text-soft: #7d6b7a;
+  --shadow: 0 8px 24px rgba(212, 115, 138, 0.12);
+  --shadow-hover: 0 12px 32px rgba(212, 115, 138, 0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --font-sans: "Nunito", "Segoe UI", sans-serif;
+  --font-arabic: "Lemonada", "Nunito", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* خلفية ناعمة متحركة */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(232, 160, 191, 0.18), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201, 177, 212, 0.15), transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 50%, rgba(255, 220, 230, 0.1), transparent);
+  pointer-events: none;
+  z-index: 0;
+  animation: bgPulse 12s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+/* قلوب وزهور عائمة - حركات متنوعة */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  font-size: 1.1rem;
+  opacity: 0.4;
+  animation: float 8s ease-in-out infinite;
+}
+
+.heart.h1 { top: 8%; left: 12%; animation: float 7s ease-in-out infinite, heartWobble 3s ease-in-out infinite; animation-delay: 0s, 0s; }
+.heart.h2 { top: 22%; right: 18%; animation: float 9s ease-in-out infinite; animation-delay: 1s; }
+.heart.h3 { top: 55%; left: 8%; animation: float 6s ease-in-out infinite, floatRotate 4s ease-in-out infinite; animation-delay: 2s, 0.5s; }
+.heart.h4 { top: 78%; right: 12%; animation: float 8.5s ease-in-out infinite; animation-delay: 3s; }
+.heart.h5 { top: 35%; left: 82%; animation: float 7.5s ease-in-out infinite; animation-delay: 1.5s; }
+.heart.h6 { top: 12%; right: 75%; animation: float 9.5s ease-in-out infinite; animation-delay: 2.5s; }
+.heart.h7 { top: 65%; left: 88%; animation: float 6.5s ease-in-out infinite; animation-delay: 0.8s; }
+.heart.h8 { top: 88%; left: 45%; animation: float 8s ease-in-out infinite; animation-delay: 4s; }
+.heart.h9 { top: 42%; left: 35%; animation: float 10s ease-in-out infinite, butterfly 5s ease-in-out infinite; animation-delay: 2s, 0s; }
+.heart.h10 { top: 5%; left: 50%; animation: float 7s ease-in-out infinite; animation-delay: 3.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+  25% { transform: translateY(-15px) translateX(5px) rotate(5deg); }
+  50% { transform: translateY(-8px) translateX(-8px) rotate(-5deg); }
+  75% { transform: translateY(-20px) translateX(3px) rotate(8deg); }
+}
+
+@keyframes floatRotate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(15deg); }
+}
+
+@keyframes heartWobble {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes butterfly {
+  0%, 100% { transform: translateY(0) translateX(0) rotate(-5deg); }
+  25% { transform: translateY(-12px) translateX(10px) rotate(10deg); }
+  50% { transform: translateY(-5px) translateX(-5px) rotate(-10deg); }
+  75% { transform: translateY(-18px) translateX(5px) rotate(5deg); }
+}
+
+/* شرائط لمعان خفيفة */
+.sparkles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: 
+    linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.03) 50%, transparent 60%);
+  background-size: 200% 200%;
+  animation: sparkleMove 15s linear infinite;
+}
+
+@keyframes sparkleMove {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* الهيدر - دخول مع أنيميشن */
+.header {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-arabic);
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.title .name {
+  padding: 0.25em 0.55em;
+  border-radius: var(--radius-sm);
+  animation: namePop 0.6s ease-out backwards;
+}
+
+.title .name.karam {
+  animation-delay: 0.2s;
+  background: linear-gradient(135deg, var(--accent-lavender), #b89bc9);
+  color: #fff;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.title .name.karam:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 10px 28px rgba(184, 155, 201, 0.35);
+}
+
+.title .name.mira {
+  animation-delay: 0.35s;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-rose));
+  color: #fff;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.title .name.mira:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 10px 28px rgba(212, 115, 138, 0.35);
+}
+
+@keyframes namePop {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.title .and {
+  font-size: 0.7em;
+  color: var(--accent-rose);
+  opacity: 0.95;
+  animation: andPulse 2s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes andPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.tagline {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  font-weight: 500;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* تبويبات */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+  animation: fadeIn 0.6s ease-out 0.5s backwards;
+}
+
+.tab {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.55rem 1.2rem;
+  border: 2px solid var(--accent-soft);
+  background: rgba(255,255,255,0.6);
+  color: var(--text-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  border-color: var(--accent-pink);
+  color: var(--accent-rose);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 115, 138, 0.2);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-rose));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.tab.active:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* المحتوى الرئيسي */
+.main {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.panel {
+  display: none;
+  animation: panelIn 0.45s ease-out;
+}
+
+.panel.active {
+  display: block;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* زر إضافة ذكرى - مع حركة لطيفة */
+.add-memory-section {
+  margin-bottom: 2rem;
+}
+
+.btn-add-memory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-rose));
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: btnGlow 3s ease-in-out infinite;
+}
+
+@keyframes btnGlow {
+  0%, 100% { box-shadow: 0 8px 24px rgba(212, 115, 138, 0.25); }
+  50% { box-shadow: 0 8px 28px rgba(212, 115, 138, 0.4); }
+}
+
+.btn-add-memory:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-add-memory:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn-add-memory .btn-icon {
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+.btn-add-memory:hover .btn-icon {
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* نموذج الذكرى - ظهور ناعم */
+.memory-form {
+  background: var(--bg-card);
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 1rem;
+  border: 1px solid var(--accent-soft);
+  animation: formSlide 0.4s ease-out;
+}
+
+@keyframes formSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.memory-form.hidden {
+  display: none;
+}
+
+.memory-form h2 {
+  font-family: var(--font-arabic);
+  font-size: 1.35rem;
+  color: var(--accent-rose);
+  margin-bottom: 1.2rem;
+}
+
+.memory-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.memory-form label span {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-bottom: 0.35rem;
+}
+
+.memory-form input,
+.memory-form textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 2px solid var(--accent-soft);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.memory-form input:focus,
+.memory-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 0 4px rgba(232, 160, 191, 0.25);
+  transform: translateY(-1px);
+}
+
+.memory-form textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.7rem 1.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-rose));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(212, 115, 138, 0.35);
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+  box-shadow: 0 6px 20px rgba(212, 115, 138, 0.4);
+}
+
+.btn-save:active {
+  transform: translateY(0);
+}
+
+.btn-cancel {
+  background: var(--accent-soft);
+  color: var(--text-soft);
+}
+
+.btn-cancel:hover {
+  background: #ecc5d0;
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+/* قسم الذكريات */
+.memories-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-family: var(--font-arabic);
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  padding-right: 0.25rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* بطاقة ذكرى - حركات إبداعية */
+.memory-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--accent-soft);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  animation: cardIn 0.5s ease-out backwards;
+}
+
+.memory-card:nth-child(1) { animation-delay: 0.05s; }
+.memory-card:nth-child(2) { animation-delay: 0.1s; }
+.memory-card:nth-child(3) { animation-delay: 0.15s; }
+.memory-card:nth-child(4) { animation-delay: 0.2s; }
+.memory-card:nth-child(5) { animation-delay: 0.25s; }
+.memory-card:nth-child(6) { animation-delay: 0.3s; }
+.memory-card:nth-child(n+7) { animation-delay: 0.35s; }
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.memory-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.memory-card .memory-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent-lavender));
+  transition: transform 0.5s ease;
+}
+
+.memory-card-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--accent-rose);
+}
+
+.memory-card:hover .memory-card-image {
+  transform: scale(1.05);
+}
+
+.memory-card-body {
+  padding: 1.2rem;
+}
+
+.memory-card-date {
+  font-size: 0.85rem;
+  color: var(--accent-rose);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.memory-card-title {
+  font-family: var(--font-arabic);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.memory-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+.memory-card-actions {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--accent-soft);
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-delete:hover {
+  color: var(--accent-rose);
+  transform: scale(1.05);
+}
+
+/* حالة فارغة */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-soft);
+  font-size: 1.05rem;
+  font-weight: 500;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+/* ========== معرض الصور ========== */
+.gallery-actions {
+  margin-bottom: 1.5rem;
+}
+
+.btn-add-photo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-lavender), #b89bc9);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(184, 155, 201, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-add-photo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(184, 155, 201, 0.4);
+}
+
+.btn-add-photo .btn-icon {
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+.btn-add-photo:hover .btn-icon {
+  transform: scale(1.15);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--accent-soft);
+  animation: galleryItemIn 0.5s ease-out backwards;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+.gallery-item:nth-child(1) { animation-delay: 0.05s; }
+.gallery-item:nth-child(2) { animation-delay: 0.08s; }
+.gallery-item:nth-child(3) { animation-delay: 0.11s; }
+.gallery-item:nth-child(4) { animation-delay: 0.14s; }
+.gallery-item:nth-child(5) { animation-delay: 0.17s; }
+.gallery-item:nth-child(6) { animation-delay: 0.2s; }
+.gallery-item:nth-child(7) { animation-delay: 0.23s; }
+.gallery-item:nth-child(8) { animation-delay: 0.26s; }
+.gallery-item:nth-child(n+9) { animation-delay: 0.3s; }
+
+@keyframes galleryItemIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-3deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.gallery-item:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: var(--shadow-hover);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-item .gallery-delete {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.gallery-item:hover .gallery-delete {
+  opacity: 1;
+}
+
+.gallery-item .gallery-delete:hover {
+  background: var(--accent-rose);
+  transform: scale(1.1);
+}
+
+/* لايت بوكس */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(74, 63, 77, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  text-align: center;
+  animation: lightboxZoom 0.4s ease-out;
+}
+
+@keyframes lightboxZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.lightbox-caption {
+  margin-top: 0.75rem;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.lightbox-close:hover {
+  background: var(--accent-rose);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.lightbox-prev { right: 1rem; }
+.lightbox-next { left: 1rem; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: var(--accent-pink);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* الفوتر */
+.footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+.backup-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn-backup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--accent-soft);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-backup:hover {
+  background: var(--accent-pink);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-backup-import {
+  cursor: pointer;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .header {
+    padding: 1.5rem 1rem 1rem;
+  }
+  .main {
+    padding: 0 1rem 3rem;
+  }
+  .memory-form {
+    padding: 1.3rem;
+  }
+  .memories-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .lightbox-prev { right: 0.5rem; }
+  .lightbox-next { left: 0.5rem; }
+}

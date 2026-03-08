@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>كرم و ميرا 💕 | ذكرياتنا</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Lemonada:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="floating-hearts" aria-hidden="true">
+    <span class="heart h1">💕</span>
+    <span class="heart h2">🌸</span>
+    <span class="heart h3">💖</span>
+    <span class="heart h4">✨</span>
+    <span class="heart h5">💕</span>
+    <span class="heart h6">🌷</span>
+    <span class="heart h7">💗</span>
+    <span class="heart h8">⭐</span>
+    <span class="heart h9">🦋</span>
+    <span class="heart h10">💕</span>
+  </div>
+  <div class="sparkles" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <h1 class="title">
+        <span class="name karam">كرم</span>
+        <span class="and">&</span>
+        <span class="name mira">ميرا</span>
+      </h1>
+      <p class="tagline">ذكرياتنا الحلوة 💕</p>
+      <nav class="tabs">
+        <button type="button" class="tab active" data-tab="memories">ذكرياتنا</button>
+        <button type="button" class="tab" data-tab="gallery">معرض الصور</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- قسم الذكريات -->
+    <section class="panel active" id="panel-memories">
+      <section class="add-memory-section">
+        <button type="button" class="btn-add-memory" id="btnAddMemory" aria-label="إضافة ذكرى جديدة">
+          <span class="btn-icon">➕</span>
+          <span>إضافة ذكرى جديدة</span>
+        </button>
+
+        <form class="memory-form hidden" id="memoryForm">
+          <h2>ذكرى جديدة 💝</h2>
+          <label>
+            <span>العنوان</span>
+            <input type="text" id="memoryTitle" placeholder="مثال: أول رحلة معاً" required />
+          </label>
+          <label>
+            <span>التاريخ</span>
+            <input type="date" id="memoryDate" required />
+          </label>
+          <label>
+            <span>الوصف</span>
+            <textarea id="memoryDesc" rows="4" placeholder="اكتب تفاصيل الذكرى هنا..."></textarea>
+          </label>
+          <label>
+            <span>رابط صورة (اختياري)</span>
+            <input type="url" id="memoryImage" placeholder="https://..." />
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-save">حفظ الذكرى 💕</button>
+            <button type="button" class="btn btn-cancel" id="btnCancel">إلغاء</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="memories-section">
+        <h2 class="section-title">ذكرياتنا</h2>
+        <div class="memories-grid" id="memoriesGrid"></div>
+        <p class="empty-state hidden" id="emptyState">لا توجد ذكريات بعد. اضغط "إضافة ذكرى جديدة" لتبدأ! 🌸</p>
+      </section>
+    </section>
+
+    <!-- قسم معرض الصور -->
+    <section class="panel" id="panel-gallery">
+      <section class="gallery-actions">
+        <label class="btn-add-photo">
+          <input type="file" id="photoInput" accept="image/*" multiple hidden />
+          <span class="btn-icon">📷</span>
+          <span>إضافة صور من جهازك</span>
+        </label>
+      </section>
+      <h2 class="section-title">معرض صورنا</h2>
+      <div class="gallery-grid" id="galleryGrid"></div>
+      <p class="empty-state hidden" id="galleryEmpty">لا توجد صور بعد. اضغط "إضافة صور من جهازك" لرفع صوركم! 📷💕</p>
+    </section>
+  </main>
+
+  <!-- نافذة عرض الصورة كبيرة -->
+  <div class="lightbox hidden" id="lightbox">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="إغلاق">✕</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImg" />
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+    <button type="button" class="lightbox-prev" id="lightboxPrev" aria-label="السابق">‹</button>
+    <button type="button" class="lightbox-next" id="lightboxNext" aria-label="التالي">›</button>
+  </div>
+
+  <footer class="footer">
+    <p>صنع بـ 💕 لكرم وميرا</p>
+    <div class="backup-actions">
+      <button type="button" class="btn-backup" id="btnExport">📥 تصدير نسخة احتياطية</button>
+      <label class="btn-backup btn-backup-import">
+        <input type="file" id="importInput" accept=".json,application/json" hidden />
+        📤 استيراد نسخة احتياطية
+      </label>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
